@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<table id = "eventsTable">
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td class="eventDateTime"><%= image_tag("events/#{event.date_time_image_name}") %></td>
+        <td class="eventInfo">
+        <p class="eventTitle"><%= event.title %></p>
+        <p class="eventSpeaker"><%= event.speaker %></p>
+        <p class="eventVenue"><%= event.venue %></p>
+        <div class="registerEventBut"><%= link_to("Register here!", event.register_link.html_safe, target: "_blank") %></div>
+        </td>
+        <td class="eventPoster"><%= image_tag("events/#{event.poster_image_name}") %></td>
+      </tr>
+      <% if user_signed_in? %>
+      <% if current_user.admin? %>
+      <% codes = "<tr>
+      <td>#{link_to 'Show', event}</td>
+      <td>#{link_to 'Edit', edit_event_path(event)}</td>
+      <td>#{link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }}</td>
+      </tr>"%>
+            <%= codes.html_safe %>
+      <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event', new_event_path %>

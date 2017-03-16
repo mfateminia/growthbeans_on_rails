@@ -1,0 +1,19 @@
+<div id="header">
+  <div id="logo"><%= image_tag("logo") %>  </div>
+  <% if user_signed_in? %>
+  <%= link_to("Welcome #{current_user.first_name} Logout", destroy_user_session_path, :method => :delete) %>
+  <% else %>
+  <%= link_to("Login", new_user_session_path) %>
+  <% end %>
+
+  <ul id="menu">
+    <li><%= nav_link_to("HOME", "index", main_index_path, "activeLink") %></li>
+    <li><%= nav_link_to("EVENTS", "events", events_path, "activeLink") %></li>
+    <li><%= link_to("MENTORSHIP", "http://www.growthbeans.com/education/login/index.php", target: "_blank") %></li>
+    <li><%= nav_link_to("PROFESSIONS", "videos", main_index_path, "activeLink") %></li>
+    <li><%= nav_link_to("ABOUT US", "aboutUs", main_index_path, "activeLink") %></li>
+  </ul>
+
+  <%= sub_menu.html_safe %>
+
+</div>

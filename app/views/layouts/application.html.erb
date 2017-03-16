@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Growthbeans</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'screen', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body  onload = "init()">
+
+    <!-- <div id="hideAll">
+    <%= image_tag("loader") %>
+    </div> -->
+
+    <%= render partial: "shared/menu" %>
+    <%= yield %>
+    <%= render partial: "shared/footer" %>
+
+  </body>
+</html>
